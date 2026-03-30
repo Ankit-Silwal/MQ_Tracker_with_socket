@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --watch ./queue --watch ./socket --ext ts --exec tsx ./socket/socket.ts",
+    "dev": "nodemon --watch ./queue --watch ./socket --ext ts --exec tsx index.ts",
     "worker": "nodemon --watch ./worker --ext ts --exec tsx ./worker/worker.ts"
   },
   "keywords": [],
@@ -15,6 +15,7 @@
   "devDependencies": {
     "@types/node": "^22.19.15",
     "nodemon": "^3.1.14",
+    "ts-node": "^10.9.2",
     "tsx": "^4.21.0",
     "typescript": "^5.9.2"
   },

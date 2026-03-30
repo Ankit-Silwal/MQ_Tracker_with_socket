@@ -28,7 +28,7 @@ export default function Home()
 
   async function startTask()
   {
-    const res = await fetch("http://localhost:3000/start-task");
+    const res = await fetch("http://localhost:5000/start-task");
     const data = await res.json();
 
     setJobId(data.jobId);
