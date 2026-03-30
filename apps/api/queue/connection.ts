@@ -1,3 +1,5 @@
-import {Redis} from "ioredis"
+import { Redis } from "ioredis";
 
-export const connection=new Redis()
+export const connection = new Redis({
+	maxRetriesPerRequest: null
+});

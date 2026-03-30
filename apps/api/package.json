@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon --watch ./queue --watch ./socket --ext ts --exec tsx ./socket/socket.ts",
+    "worker": "nodemon --watch ./worker --ext ts --exec tsx ./worker/worker.ts"
   },
   "keywords": [],
   "author": "",

@@ -8,7 +8,8 @@ export const io = new Server(4001, {
   cors: { origin: "*" }
 });
 
-// Listen to Redis channel
+
+// Listening  to the redis channel
 sub.subscribe("progress-updates");
 
 sub.on("message", (channel, message) =>

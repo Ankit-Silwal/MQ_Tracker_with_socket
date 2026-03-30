@@ -1,8 +1,8 @@
 import { Worker } from "bullmq";
 import {Redis} from "ioredis";
 
-const connection=new Redis();
-const publisher=new Redis();
+const connection = new Redis({ maxRetriesPerRequest: null });
+const publisher = new Redis({ maxRetriesPerRequest: null });
 
 new Worker("task-queue",async (job)=>{
   const {jobId}=job.data;
@@ -17,4 +17,5 @@ new Worker("task-queue",async (job)=>{
       })
     )
   }
-})
+  return {status:"done"}
+},{connection})
