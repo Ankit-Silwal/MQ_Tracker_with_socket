@@ -9,17 +9,18 @@ export const io = new Server(4001, {
 });
 
 
-// Listening  to the redis channel
+io.on("connection",(socket)=>{
+  console.log("Client connected successfully",socket.id);
+  socket.on("join-room",(jobId)=>{
+    console.log(`Socket ${socket.id} joined room ${jobId}`)
+    socket.join(jobId)
+  })
+})
+
 sub.subscribe("progress-updates");
+sub.on("message",(channel,message)=>{
+  const data=JSON.parse(message);
+  io.to(data.jobId).emit("progress",data);
+})
 
-sub.on("message", (channel, message) =>
-{
-  if (channel === "progress-updates")
-  {
-    const data = JSON.parse(message);
-
-    io.emit("progress", data);
-  }
-});
-
-console.log("Socket server running on 4001");
+console.log(`Socket server is running at port no 4001`)
